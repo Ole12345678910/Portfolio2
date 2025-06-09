@@ -1,13 +1,29 @@
 export default function ReactFrameworkCA() {
+  const handleShare = () => {
+    if (navigator.share) {
+      navigator
+        .share({
+          title: "ReactFrameworkCA",
+          text: "Check out this React product shop project I built!",
+          url: window.location.href,
+        })
+        .catch((err) => console.error("Share failed:", err));
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      alert("Link copied to clipboard!");
+    }
+  };
+
   return (
-    <div className="max-w-3xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-4">ReactFrameworkCA</h1>
+    <div className="article-container">
+      <h1 className="article-title">ReactFrameworkCA</h1>
 
       <img
-        src="/public/reeact-ca2.png"
+        src="/reeact-ca2.png"
         alt="ReactFrameworkCA"
-        className="mb-4 rounded"
+        className="article-img"
       />
+      <hr className="article-line" />
 
       <p className="mb-4">
         This project was created as part of a school assignment to demonstrate
@@ -23,8 +39,8 @@ export default function ReactFrameworkCA() {
       </p>
       <p>The layout was designed to be clean, responsive, and user-friendly.</p>
 
-      {/* Project Links */}
-      <p className="mt-4 space-x-4">
+      {/* Project Links and Share Button inline */}
+      <p className="article-link-container">
         <a
           href="https://react-ca.netlify.app/"
           target="_blank"
@@ -49,16 +65,13 @@ export default function ReactFrameworkCA() {
         >
           View README →
         </a>
-      </p>
-
-      {/* Self-assessment */}
-      <h2 className="text-xl font-semibold mt-6">
-        Self-assessment & Improvements
-      </h2>
-      <p>
-        I improved the structure and used routing. I learned better component
-        reuse and state handling. The UI was refined using Tailwind CSS for
-        responsive layout and cleaner styling.
+        <button
+          onClick={handleShare}
+          className="share-btn"
+          aria-label="Share this project"
+        >
+          Share →
+        </button>
       </p>
     </div>
   );

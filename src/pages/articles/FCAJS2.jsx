@@ -1,14 +1,29 @@
 export default function FCAJS2() {
+  const handleShare = () => {
+    if (navigator.share) {
+      navigator
+        .share({
+          title: "FCAJS2 Project",
+          text: "Check out this social media project I built!",
+          url: window.location.href,
+        })
+        .catch((err) => console.error("Share failed:", err));
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      alert("Link copied to clipboard!");
+    }
+  };
+
   return (
-    <div className="max-w-3xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-4">FCAJS2</h1>
+    <div className="article-container">
+      <h1 className="article-title">FCAJS2</h1>
 
       <img
-        src="/public/fcajs2-css-frameworks2.png"
+        src="/fcajs2-css-frameworks2.png"
         alt="FCAJS2"
-        className="mb-4 rounded"
+        className="article-img"
       />
-
+      <hr className="article-line"/>
       <p className="mb-4">
         This project was created to demonstrate my ability to build a dynamic
         web application using a JavaScript framework and Tailwind CSS.
@@ -30,8 +45,8 @@ export default function FCAJS2() {
         structure reusable components and improve overall project organization.
       </p>
 
-      {/* Prosjektlenker */}
-      <p className="mt-4 space-x-4">
+      {/* Project links and share button inline */}
+      <p className="article-link-container">
         <a
           href="https://fcajs2-css-frameworks.netlify.app/"
           target="_blank"
@@ -56,16 +71,13 @@ export default function FCAJS2() {
         >
           View README →
         </a>
-      </p>
-
-      {/* Selv-evaluering */}
-      <h2 className="text-xl font-semibold mt-6">
-        Self-assessment & improvements
-      </h2>
-      <p>
-        I improved the comment logic, added better user flow handling, and
-        refactored components to make them cleaner and more reusable. I also
-        improved accessibility and responsiveness.
+        <button
+          onClick={handleShare}
+          className="share-btn"
+          aria-label="Share this project"
+        >
+          Share →
+        </button>
       </p>
     </div>
   );

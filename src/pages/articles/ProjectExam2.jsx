@@ -1,14 +1,29 @@
 export default function ProjectExam2() {
+  const handleShare = () => {
+    if (navigator.share) {
+      navigator
+        .share({
+          title: "Project-2-Exam",
+          text: "Check out this bidding website project I built!",
+          url: window.location.href,
+        })
+        .catch((err) => console.error("Share failed:", err));
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      alert("Link copied to clipboard!");
+    }
+  };
+
   return (
-    <div className="max-w-3xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-4">Project-2-Exam</h1>
+    <div className="article-container">
+      <h1 className="article-title">Project-2-Exam</h1>
 
       <img
-        src="/public/diamondbid2.png"
+        src="/diamondbid2.png"
         alt="Project-2-Exam"
-        className="mb-4 rounded"
+        className="article-img"
       />
-
+      <hr className="article-line"/>
       <p className="mb-4">
         This was my final exam project, where I built a fully functional bidding
         website. I used Tailwind CSS for styling and plain JavaScript for all
@@ -31,8 +46,8 @@ export default function ProjectExam2() {
         maintainable code with Tailwind CSS.
       </p>
 
-      {/* Project Links */}
-      <p className="mt-4 space-x-4">
+      {/* Project Links and Share Button inline */}
+      <p className="article-link-container">
         <a
           href="https://diamondbid.netlify.app/"
           target="_blank"
@@ -57,17 +72,13 @@ export default function ProjectExam2() {
         >
           View README →
         </a>
-      </p>
-
-      {/* Self-assessment */}
-      <h2 className="text-xl font-semibold mt-6">
-        Self-assessment & Improvements
-      </h2>
-      <p>
-        I added form validation, improved responsiveness, and made UI
-        enhancements based on the feedback I received. I also improved the
-        structure of the codebase and made the site more user-friendly and
-        accessible.
+        <button
+          onClick={handleShare}
+          className="share-btn"
+          aria-label="Share this project"
+        >
+          Share →
+        </button>
       </p>
     </div>
   );

@@ -2,3 +2,100 @@
 @tailwind components;
 @tailwind utilities;
 
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+  background-image: url('/breathtaking-shot-beautiful-sunrise-italian-alps-min.jpg');
+  background-size: cover;       
+  background-repeat: no-repeat; 
+  background-position: center;  
+  min-height: 100vh;           
+}
+
+
+/*src/pages/Home.jsx*/
+
+.card-title-text{
+  @apply font-semibold text-gray-800 mb-2;
+}
+
+.githublink{
+  @apply text-blue-600 hover:underline font-semibold;
+}
+
+.card-container{
+  @apply mb-8  bg-white p-5 rounded-xl bg-opacity-40 border border-gray-900;
+}
+
+.card-styling{
+  @apply border rounded-xl p-5 shadow hover:shadow-lg transition bg-white;
+}
+
+.text-card-styling{
+  @apply text-lg font-bold text-gray-900 mb-1;
+}
+
+.card-image{
+  @apply w-full h-40 object-cover rounded-md mb-3;
+}
+
+.card-description{
+  @apply  text-gray-600 mb-2;
+}
+
+.language-text{
+  @apply text-sm text-blue-900 mb-2;
+}
+
+
+
+/*src/pages/articles "FCAJS2.jsx" 
+                    "ProjectExam2.jsx" 
+                    "ReactFrameworkCA.jsx"*/
+
+.article-container{
+  @apply max-w-3xl mx-auto p-6 bg-white rounded-xl mt-6;
+}
+
+.article-title{
+  @apply text-3xl font-bold mb-4;
+}
+
+.article-img{
+  @apply my-4  shadow-lg;
+}
+
+.article-line{
+  @apply my-6 border-gray-900;
+}
+
+.article-link-container{
+  @apply mt-4 space-x-4 flex items-center justify-center;
+}
+
+.share-btn{
+  @apply  text-blue-600 underline cursor-pointer bg-transparent border-none p-0 font-normal;
+}
+
+/*src/components/Footer.jsx*/
+
+.footer-container{
+  @apply bg-gray-900 text-gray-300 text-center p-4 mt-8 text-sm;
+}
+
+.footer-links{
+  @apply underline text-blue-400;
+}
+
+
+/*src/components/Header.jsx*/
+
+.header-container{
+  @apply bg-gray-900 text-white p-4 shadow-md max-w-7xl mx-auto flex justify-between items-center;
+}
